@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <ul>
+        {% for post in posts %}
+        <li>{{ post.question }}</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
