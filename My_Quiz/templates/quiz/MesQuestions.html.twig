@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	{% if question %}
+		<table id="question" class="table table-striped">
+			<thead>
+				<tr>
+					<th>
+						Question
+                    </th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for question in question %}
+					<tr>
+						<td>
+							{{ question.question }}
+						</td>
+						<td>
+							<a href="/quiz/{{ question.id }}" class="btn btn-dark">
+								Détails
+							</a>
+						</td>
+					</tr>
+	            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p> Aucune question</p>
+    {% endif %}
+{% endblock %}
