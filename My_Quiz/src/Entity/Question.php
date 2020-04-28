@@ -42,7 +42,7 @@ class Question
         return $this;
     }
 
-    public function getquestion(): ?string
+    public function getQuestion(): ?string
     {
         return $this->question;
     }
