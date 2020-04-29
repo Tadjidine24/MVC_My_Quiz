@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+{% endblock %}
+{% block body %}
+{% if reponse %}
+	<table id="reponse" class="table table-striped">
+		<thead>
+			<tr>
+				<th>
+					Reponse
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for reponse in reponse %}
+				<tr>
+					<td>
+                      {{ reponse.id }} . {{ reponse.reponse }} 
+					</td>
+				</tr>
+
+</td></tbody></tr>{% endfor %}</tbody></table>{% else %}<p>Aucune reponse</p>{% endif %}{% endblock %}

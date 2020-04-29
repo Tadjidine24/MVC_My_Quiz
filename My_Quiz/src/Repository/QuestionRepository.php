@@ -68,4 +68,13 @@ class QuestionRepository extends ServiceEntityRepository
     //         ->getOneOrNullResult()
     //     ;
     // }
+
+    public function findByQuestion(){
+        $qb = $this->createQueryBuilder('question');
+        $qb->select('question, categorie.name')
+            ->innerJoin('App\Repository\CategorieRepository','ON' ,'question.id_categorie = categorie.id')
+            ->groupBy('categorie.id');
+    
+        return $qb->getQuery()->getResult();
+    }
 }

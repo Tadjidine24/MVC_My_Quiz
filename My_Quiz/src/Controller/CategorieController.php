@@ -40,19 +40,6 @@ class CategorieController extends AbstractController
     public function show($id)
     {
         $categorie = $this->getDoctrine()->getRepository(Categorie::class)->find($id);
-        // $qb = $this->getEntityManager()->createQueryBuilder();
-        // $qb->select('u')
-        //     ->from('\namespace\for\User', 'u')
-        //     ->join('u.roles', 'r')
-        //     ->where(...)
-       
-        // return $qb->getQuery()->getResult();
-        $qb = $this->createQueryBuilder('question');
-        $qb->select('question, categorie.name')
-            ->innerJoin('App\Repository\CategorieRepository','ON' ,'question.id_categorie = categorie.id')
-            ->groupBy('categorie.id');
-    
-        return $qb->getQuery()->getResult();
         return $this->render('categorie/showdetails.html.twig', array('categorie' => $categorie));
     }
 
