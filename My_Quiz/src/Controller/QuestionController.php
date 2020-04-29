@@ -64,7 +64,7 @@ class QuestionController extends AbstractController
     public function show($id)
     {
         $question = $this->getDoctrine()->getRepository(Question::class)->find($id);
-        return $this->render('quiz/show.html.twig', array('question' => $question));
+        return $this->render('quiz/showdetails.html.twig', array('question' => $question));
     }
 
     /**
@@ -118,7 +118,7 @@ class QuestionController extends AbstractController
     *@Route("/question/delete/{id}", name="delete_question")
     *Method({"DELETE"})
     */
-    public function delete(Request $request, $id)
+    public function delete($id)
     {
         $question = $this->getDoctrine()->getRepository(Question::class)->find($id);
 

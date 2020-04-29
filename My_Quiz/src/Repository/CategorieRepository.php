@@ -6,6 +6,8 @@ use App\Entity\Categorie;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
+
+
 /**
  * @method Categorie|null find($id, $lockMode = null, $lockVersion = null)
  * @method Categorie|null findOneBy(array $criteria, array $orderBy = null)
@@ -47,4 +49,13 @@ class CategorieRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findByQuestion(){
+        $qb = $this->createQueryBuilder('question');
+        $qb->select('question, categorie.name')
+            ->innerJoin('App\Repository\CategorieRepository','ON' ,'question.id_categorie = categorie.id')
+            ->groupBy('categorie.id');
+    
+        return $qb->getQuery()->getResult();
+    }
 }

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<h1> Nom de la categorie : {{ categorie.name }} </h1>
+	<p>
+		Categorie numero : {{ categorie.id }}
+	</p>
+	
+	{# {% for id_categorie in question %}
+		{% if question.id_categorie == categorie.id %}
+			<h3>
+				{{ question.id }} . {{ question.question }} 
+			</h3>
+		{% endif %}
+	{% endfor %} #}
+	
+	<a href="/categorie">
+		Retour
+	</a>
+{% endblock %}

@@ -14,9 +14,8 @@
 			{% for question in question %}
 				<tr>
 					<td>
-						{{ question.question }}
+                        {{ question.id }}. {{ question.question }}
 					</td>
-					<td></td>
 					<td>
 						<a href="/question/{{ question.id }}" class="btn btn-dark">
 							Détails
@@ -27,9 +26,9 @@
 						<a href="/question/delete/{{ question.id }}" class="btn	btn-danger" onclick="return confirm('Etes-vous sûr de supprimer	cet	article?');">
 							Supprimer
 						</a>
-					</>
+                    </td>
 				</tr>
-			</td>
+
 		</tbody>
 	</tr>
 </td></tbody></tr>{% endfor %}</tbody></table>{% else %}<p>Aucune question</p>{% endif %}{% endblock %}

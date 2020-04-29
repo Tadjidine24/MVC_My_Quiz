@@ -16,6 +16,8 @@ security:
             entity:
                 class: App\Entity\User
                 property: email
+
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -44,3 +46,100 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+# app/config/security.yml
+
+# security:
+#   encoders:
+#         # use your user class name here
+#         App\Entity\User:
+#             # Use native password encoder
+#             # This value auto-selects the best possible hashing algorithm
+#             # (i.e. Sodium when available).
+#             algorithm: auto   
+#     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+
+#   role_hierarchy:
+#     ROLE_ADMIN:       ROLE_USER
+#     ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+#   providers:
+#     in_memory:
+#       memory:
+#         users:
+#           user:  { password: userpass, roles: [ 'ROLE_USER' ] }
+#           admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+
+#     in_database: 
+#         entity:
+#             class: App\Entity\User
+#             property: email
+
+
+#   firewalls:
+#     dev:
+#       pattern: ^/(_(profiler|wdt)|css|images|js)/
+#       security: false
+#             main:
+#             anonymous: lazy
+#             # provider: users_in_memory
+#             provider: in_database
+
+#             form_login:
+#                 login_path: security_login
+#                 check_path: security_login
+
+#             logout:
+#                 path: security_logout
+#                 target: security_login
+
+#             # activate different ways to authenticate
+#             # https://symfony.com/doc/current/security.html#firewalls-authentication
+
+#             # https://symfony.com/doc/current/security/impersonating_user.html
+#             # switch_user: true
+
+#     # Easy way to control access for large sections of your site
+#     # Note: Only the *first* access control that matches will be used
+
+#   access_control:
+#     #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+#     # - { path: ^/admin, roles: ROLE_ADMIN }
+#     # - { path: ^/profile, roles: ROLE_USER }

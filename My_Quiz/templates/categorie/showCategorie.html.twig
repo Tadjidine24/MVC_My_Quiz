@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+{% block title %}
+{% endblock %}
+{% block body %}
+{% if categorie %}
+	<table id="categorie" class="table table-striped">
+		<thead>
+			<tr>
+				<th>
+					Categorie
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for categorie in categorie %}
+				<tr>
+					<td>
+                      {{ categorie.id }} . {{ categorie.name }} 
+					</td>
+					<td>
+						<a href="/categorie/{{ categorie.id }}" class="btn btn-dark">
+							Détails
+						</a>
+						<a href="/categorie/edit/{{ categorie.id }}" class="btn btn-dark">
+							Modifier
+						</a>
+						<a href="/categorie/delete/{{ categorie.id }}" class="btn	btn-danger" onclick="return confirm('Etes-vous sûr de supprimer	cet	article?');">
+							Supprimer
+						</a>
+                    </td>
+				</tr>
+		</tbody>
+	</tr>
+</td></tbody></tr>{% endfor %}</tbody></table>{% else %}<p>Aucune categoire</p>{% endif %}{% endblock %}
