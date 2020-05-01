@@ -16,8 +16,10 @@ class Question
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="integer")
+/**
+     * @var integer $id_categorie
+ * @ORM\ManyToOne(targetEntity="Categorie")
+ * @ORM\JoinColumn(name="id_categorie", referencedColumnName="id")
      */
     private $id_categorie;
     /**

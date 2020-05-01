@@ -47,4 +47,14 @@ class ReponseRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function findByReponse(){
+        $qb = $this->getEntityManager()->createQueryBuilder();
+        $qb->select('r')
+            ->from('App\Entity\Reponse', 'r')
+            ->join('r.id_question', 'q')
+            ->where('r.id_question = q.id')
+            ->andWhere('r.id_question = 1', 'q.id = 1');
+
+        return $qb->getQuery()->getResult();
+        }
 }

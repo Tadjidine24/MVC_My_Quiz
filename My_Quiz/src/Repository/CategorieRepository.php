@@ -50,12 +50,15 @@ class CategorieRepository extends ServiceEntityRepository
     }
     */
 
-    public function findByQuestion(){
-        $qb = $this->createQueryBuilder('question');
-        $qb->select('question, categorie.name')
-            ->innerJoin('App\Repository\CategorieRepository','ON' ,'question.id_categorie = categorie.id')
-            ->groupBy('categorie.id');
-    
+    public function findByCategorie()
+    {
+        $qb = $this->getEntityManager()->createQueryBuilder();
+        $qb->select('q')
+            ->from('App\Entity\Question', 'q')
+            ->join('q.id_categorie', 'c')
+            ->where('q.id_categorie = c.id')
+            ->andWhere('q.id_categorie = 1', 'q.id = 1');
+
         return $qb->getQuery()->getResult();
     }
 }

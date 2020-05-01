@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    {% for  questions in questions %}
+            <a class="nav-link"> {{ questions.question }} </a>
+    {% endfor %}
+    {% for reponses in reponses %}
+        <li> {{ reponses.reponse }}  </li>
+    {% endfor %}
+{% endblock %}

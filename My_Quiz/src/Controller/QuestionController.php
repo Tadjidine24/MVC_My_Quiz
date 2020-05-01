@@ -11,6 +11,10 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use App\Repository\QuestionRepository as quiz;
+use App\Repository\ReponseRepository as rep;
+
+
 
 class QuestionController extends AbstractController
 {
@@ -130,6 +134,24 @@ class QuestionController extends AbstractController
         $response->send();
 
         return $this->redirectToRoute('question_list');
+    }
+
+    /**
+    *@Route("/quiz", name="quiz")
+    */
+    public function quiz(quiz $questions, rep $reponses)
+    {
+        $questions = $this->getDoctrine()
+        ->getManager()
+        ->getRepository('App:Question')
+        ->findByQuestion(1, 1);
+
+        $reponses = $this->getDoctrine()
+        ->getManager()
+        ->getRepository('App:Reponse')
+        ->findByReponse(1, 1);
+
+        return $this->render('thequiz/index.html.twig', ['questions' => $questions, 'reponses' => $reponses]);
     }
     
 

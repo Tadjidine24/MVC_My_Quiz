@@ -17,23 +17,59 @@ class Reponse
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * * @var integer $id_question
+     * @ORM\ManyToOne(targetEntity="Question")
+     * @ORM\JoinColumn(name="id_question", referencedColumnName="id")
      */
-    private $Reponse;
+    private $id_question;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $reponse;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $reponse_expected;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getReponse(): ?string
+    public function getIdQuestion(): ?int
     {
-        return $this->Reponse;
+        return $this->id_question;
     }
 
-    public function setReponse(string $Reponse): self
+    public function setIdQuestion(int $id_question): self
     {
-        $this->Reponse = $Reponse;
+        $this->id_question = $id_question;
+
+        return $this;
+    }
+
+    public function getReponse(): ?string
+    {
+        return $this->reponse;
+    }
+
+    public function setReponse(string $reponse): self
+    {
+        $this->reponse = $reponse;
+
+        return $this;
+    }
+
+    public function getReponseExpected(): ?int
+    {
+        return $this->reponse_expected;
+    }
+
+    public function setReponseExpected(int $reponse_expected): self
+    {
+        $this->reponse_expected = $reponse_expected;
 
         return $this;
     }
