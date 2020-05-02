@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{# {% extends 'base.html.twig' %}
 
 
 {% block title %}
@@ -10,8 +10,17 @@
         <div class="form-group">
             <input placeholder="Nouvelle question ..." required name="new_question" type="text" class="form-control">
         </div>
+        <form action=""
         <div class="form-group">
             <button type="submit" class="btn btn-success">Creer</button>
         </div>
 </form>
+{% endblock %} #}
+
+{% extends 'base.html.twig' %}
+{% block title %}Ajouter une Question{% endblock %}
+{% block body %}
+{{ form_start(form) }}
+{{ form_widget(form) }}
+{{ form_end(form) }}
 {% endblock %}

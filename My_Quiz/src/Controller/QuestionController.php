@@ -13,8 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use App\Repository\QuestionRepository as quiz;
 use App\Repository\ReponseRepository as rep;
-
-
+use Doctrine\ORM\Query;
 
 class QuestionController extends AbstractController
 {
@@ -139,19 +138,19 @@ class QuestionController extends AbstractController
     /**
     *@Route("/quiz", name="quiz")
     */
-    public function quiz(quiz $questions, rep $reponses)
+    public function quiz(quiz $questions, rep $reponses, Request $request)
     {
-        $questions = $this->getDoctrine()
-        ->getManager()
-        ->getRepository('App:Question')
-        ->findByQuestion(1, 1);
+        // $questions = $this->getDoctrine()
+        // ->getManager()
+        // ->getRepository('App:Question')
+        // ->findByQuestion(1, 1);
 
-        $reponses = $this->getDoctrine()
-        ->getManager()
-        ->getRepository('App:Reponse')
-        ->findByReponse(1, 1);
+        // $reponses = $this->getDoctrine()
+        // ->getManager()
+        // ->getRepository('App:Reponse')
+        // ->findByReponse(1, 1);
 
-        return $this->render('thequiz/index.html.twig', ['questions' => $questions, 'reponses' => $reponses]);
+        return $this->render('thequiz/index.html.twig', ['questions' => $questions->findByQuestion((int) $request->query->get("pagination",1),1), 'reponses' => $reponses->findByReponse((int) $request->query->get("pagination", 1),3), 'totalPosts' => $questions->count()]);
     }
     
 

@@ -69,15 +69,29 @@ class QuestionRepository extends ServiceEntityRepository
     //     ;
     // }
 
-    public function findByQuestion()
+    public function findByQuestion(int $pagination, int $nbr)
     {
         $qb = $this->getEntityManager()->createQueryBuilder();
         $qb->select('q')
             ->from('App\Entity\Question', 'q')
             ->join('q.id_categorie', 'c')
             ->where('q.id_categorie = c.id')
-            ->andWhere('q.id_categorie = 1', 'q.id = 1');
+            ->setFirstResult(($pagination - 1) * $nbr)
+            ->setMaxResults($nbr);
+            // ->andWhere('q.id_categorie = 1', 'q.id = 1');
 
         return $qb->getQuery()->getResult();
     }
+
+    // public function count()
+    // {
+
+    //     return $this->getEntityManager()->createQueryBuilder('q')
+    //         ->select('COUNT(q.id)')
+    //         ->from('App\Entity\Question', 'q')
+    //         ->join('q.id_categorie', 'c')
+    //         ->where('q.id_categorie = c.id')
+    //         ->getQuery()
+    //         ->getSingleScalarResult();
+    // }
 }
