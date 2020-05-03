@@ -83,15 +83,15 @@ class QuestionRepository extends ServiceEntityRepository
         return $qb->getQuery()->getResult();
     }
 
-    // public function count()
-    // {
+    public function count()
+    {
 
-    //     return $this->getEntityManager()->createQueryBuilder('q')
-    //         ->select('COUNT(q.id)')
-    //         ->from('App\Entity\Question', 'q')
-    //         ->join('q.id_categorie', 'c')
-    //         ->where('q.id_categorie = c.id')
-    //         ->getQuery()
-    //         ->getSingleScalarResult();
-    // }
+        return $this->getEntityManager()->createQueryBuilder('q')
+            ->select('COUNT(q.id)')
+            ->from('App\Entity\Question', 'q')
+            ->join('q.id_categorie', 'c')
+            ->where('q.id_categorie = c.id')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
 }

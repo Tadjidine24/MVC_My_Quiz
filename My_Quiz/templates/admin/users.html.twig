@@ -4,12 +4,13 @@
 {% endblock %}
 {% block body %}
 	<h1>Liste des Utilisateurs</h1>
-						<a href="{{ path('admin_CreateNew') }}">
+
+	<table id="users" class="table table-striped">
+							<a href="{{ path('admin_CreateNew') }}">
 							<button type="button" class="btn btn-success">
 								Cree un Utilisateur
 							</button>
 						</a>
-	<table id="users" class="table table-striped">
 		<thead>
 			<tr>
 				<th>Id</th>

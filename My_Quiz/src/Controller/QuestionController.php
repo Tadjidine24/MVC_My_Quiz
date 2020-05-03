@@ -154,7 +154,7 @@ class QuestionController extends AbstractController
         // ->getRepository('App:Reponse')
         // ->findByReponse(1, 1);
 
-        return $this->render('thequiz/index.html.twig', ['questions' => $questions->findByQuestion((int) $request->query->get("pagination",1),1), 'reponses' => $reponses->findByReponse((int) $request->query->get("pagination", 1),3)]);
+        return $this->render('thequiz/index.html.twig', ['questions' => $questions->findByQuestion((int) $request->query->get("pagination",1),1), 'reponses' => $reponses->findByReponse((int) $request->query->get("pagination", 1),3), 'totalPosts' => $questions->count()]);
     }
     
 
