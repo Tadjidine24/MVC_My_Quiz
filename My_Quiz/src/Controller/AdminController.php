@@ -32,7 +32,7 @@ class AdminController extends AbstractController
     }
 
          /**
-     * @Route("/inscription", name="security_registration")
+     * @Route("/utilisateurs/CreateNew", name="CreateNew")
      */
     public function registration(Request $request, EntityManagerInterface $em, UserPasswordEncoderInterface $encoder,  \Swift_Mailer $mailer)
     {
@@ -54,29 +54,9 @@ class AdminController extends AbstractController
             $em->persist($user);
             $em->flush();
 
-            $emailUser = $user->getEmail();
-
-
-            $url = $this->generateUrl('confirm_touken', ['token' => $token, 'id' => $user->getId()], UrlGeneratorInterface::ABSOLUTE_URL);
-
-            $message = (new \Swift_Message('Email de Confirmation'))
-                ->setSubject('Confirmation d\'adresse email')
-                ->setFrom('tadjidinetamou@gmail.com')
-                ->setTo($emailUser)
-                ->setBody(
-                    $this->renderView('sendemail/hello.html.twig', [
-                        'user' => $user,
-                        'url' => $url,
-                        'token' => $token
-                    ]),
-                    'text/html'
-                );
-            $mailer->send($message);
-            $this->addFlash('message', 'Un mail de confirmation vous a été envoyé');
-
-            return $this->redirectToRoute('confirm_mail');
+            return $this->redirectToRoute('admin_utilisateurs');
         }
-        return $this->render('security/registration.html.twig', ['form' => $form->createView()]);
+        return $this->render('admin/createCompte.html.twig', ['form' => $form->createView()]);
     }
 
       /**

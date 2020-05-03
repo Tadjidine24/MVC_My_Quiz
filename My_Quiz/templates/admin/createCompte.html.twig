@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Inscription au site</h1>
+    <h1>Creation d'un compte</h1>
 
     {{ form_start(form) }}
     {{ form_row(form.username, {'label': 'Nom d\'utilisateur', 'attr': {'class': 'form-control'}}) }}
@@ -9,6 +9,6 @@
     {{ form_row(form.password, {'label': 'Mot de passe', 'attr': {'class': 'form-control'}}) }}
     {{ form_row(form.confirm_password, {'label': 'Confirmation du mot de passe', 'attr': {'class': 'form-control'}}) }}
 
-    <button type="submit" class="btn btn-success">Inscription !</button>
+    <button type="submit" class="btn btn-success">Cree le compte !</button>
     {{ form_end(form) }}
 {% endblock %}
