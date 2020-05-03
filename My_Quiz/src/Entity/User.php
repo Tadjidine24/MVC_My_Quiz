@@ -45,6 +45,16 @@ class User implements UserInterface
      */
     public $confirm_password;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $token;
+
+//     /**
+//  * @ORM\Column(type="json")
+//  */
+// private $roles = [];
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,16 +96,44 @@ class User implements UserInterface
         return $this;
     }
 
+        /*
+     * Get token
+     */
+    public function getToken()
+    {
+        return $this->token;
+    }
+ 
+    /*
+     * Set token
+     */
+    public function setToken($token)
+    {
+        $this->token = $token;
+        return $this;
+    }
+
     public function eraseCredentials()
     {
         
     }
 
+    public function getConfirmationToken()
+    {
+
+    }
+
+    public function setConfirmationToken()
+    {
+
+    }
+
+
+
     public function getSalt()
     {
         
     }
-
     public function getRoles()
     {
         return ['ROLE_USER'];

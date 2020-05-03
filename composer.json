@@ -1,0 +1,6 @@
+{
+    "require": {
+        "symfony/swiftmailer-bundle": "^3.4",
+        "symfony/workflow": "^5.0"
+    }
+}

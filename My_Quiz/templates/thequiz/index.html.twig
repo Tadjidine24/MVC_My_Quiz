@@ -12,15 +12,15 @@
     {% endfor %}
 
     {% for i in 1..((totalPosts/1)|round(0, 'ceil')) %}
-        {# <a href="{{ path('quiz', {pagination: i}) }}">{{ i }}</a> #}
+        <a href="{{ path('quiz', {pagination: i}) }}">{{ i }}</a>
             <nav aria-label="navigation">
-  <ul class="pager">
+  {# <ul class="pager">
     <li><a href="{{ path('quiz', {pagination: i - 1}) }}" title="Précédent">Précédent</a></li>
     <li><a href="{{ path('quiz', {pagination: i + 1}) }}" title="Suivant">Suivant</a></li>
   </ul>
-</nav>
+</nav>#}
     {% endfor %}
-
+{#}
 {% for reponses in reponses %}
 {% for reponse_expected == 1 %}
 
@@ -32,6 +32,6 @@
   </form>
   {% endif %}
 {% endfor %}
-{% endfor %}
+{% endfor %} #}
 
 {% endblock %}
