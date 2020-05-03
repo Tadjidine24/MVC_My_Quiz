@@ -3,35 +3,36 @@
 {% block title %}{% endblock %}
 
 {% block body %}
-    {% for  questions in questions %}
-            <h3 class="nav-link"> {{ questions.question }} </h3>
-    {% endfor %}
-    {% for reponses in reponses %}
-          <input type="checkbox" id="rep" name="rep" value="Bike">
-  <label for="rep"> {{ reponses.reponse }} </label><br>
-    {% endfor %}
-
-    {% for i in 1..((totalPosts/1)|round(0, 'ceil')) %}
-        <a href="{{ path('quiz', {pagination: i}) }}">{{ i }}</a>
-            <nav aria-label="navigation">
-  {# <ul class="pager">
-    <li><a href="{{ path('quiz', {pagination: i - 1}) }}" title="Précédent">Précédent</a></li>
-    <li><a href="{{ path('quiz', {pagination: i + 1}) }}" title="Suivant">Suivant</a></li>
-  </ul>
-</nav>#}
-    {% endfor %}
-{#}
-{% for reponses in reponses %}
-{% for reponse_expected == 1 %}
-
-{% if reponses == reponse_expected %}
-          <form action="{{ path('quiz', {pagination: i + 1}) }}">
-        <div class="form-group">
-            <button type="submit" class="btn btn-success">Valider</button>
-        </div>
-  </form>
-  {% endif %}
+<form action = "#">
+{% for  questions in questions %}
+	<legend>
+		{{ questions.question }}
+	</legend>
 {% endfor %}
-{% endfor %} #}
+{% for reponses in reponses %}
+		{{ reponses.reponse }}
 
-{% endblock %}
+{# </div>{% endfor %}{% for i in 1..((totalPosts/11)|round(0, 'ceil')) %}
+<a href="{{ path('quiz', {pagination: i}) }}">{{ i }}</a>
+<nav
+	aria-label="navigation"> #}
+{# <ul class="pager">
+		    <li><a href="{{ path('quiz', {pagination: i - 1}) }}" title="Précédent">Précédent</a></li>
+		    <li><a href="{{ path('quiz', {pagination: i + 1}) }}" title="Suivant">Suivant</a></li>
+		  </ul>
+		</nav>#}
+{% endfor %}
+</form>
+{#}
+		{% for reponses in reponses %}
+		{% for reponse_expected == 1 %}
+		
+		{% if reponses == reponse_expected %}
+		          <form action="{{ path('quiz', {pagination: i + 1}) }}">
+		        <div class="form-group">
+		            <button type="submit" class="btn btn-success">Valider</button>
+		        </div>
+		  </form>
+		  {% endif %}
+		{% endfor %}
+		{% endfor %} #}{% endblock %}

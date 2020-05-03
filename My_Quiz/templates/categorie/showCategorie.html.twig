@@ -1,6 +1,5 @@
 {% extends 'base.html.twig' %}
-{% block title %}
-{% endblock %}
+{% block title %}{% endblock %}
 {% block body %}
 {% if categorie %}
 	<table id="categorie" class="table table-striped">
@@ -15,20 +14,29 @@
 			{% for categorie in categorie %}
 				<tr>
 					<td>
-                      {{ categorie.id }} . {{ categorie.name }} 
+						{{ categorie.id }}
+						.
+						{{ categorie.name }}
 					</td>
 					<td>
-						<a href="/categorie/{{ categorie.id }}" class="btn btn-dark">
-							Détails
+						<a href="/categorie/{{ categorie.id }}">
+							<button type="button" class="btn btn-info">
+								Détails
+							</button>
 						</a>
-						<a href="/categorie/edit/{{ categorie.id }}" class="btn btn-dark">
-							Modifier
+						<a href="/categorie/edit/{{ categorie.id }}">
+							<button type="button" class="btn btn-warning">
+								Modifier
+							</button>
 						</a>
-						<a href="/categorie/delete/{{ categorie.id }}" class="btn	btn-danger" onclick="return confirm('Etes-vous sûr de supprimer	cet	article?');">
-							Supprimer
-						</a>
-                    </td>
+						<a href="/categorie/delete/{{ categorie.id }}" onclick="return confirm('Etes-vous sûr de supprimer	cet	article?');">
+							<button type="button" class="btn btn-danger">
+								Supprimer
+							</button>
+						</td>
+					</td>
 				</tr>
+			</tbody>
 		</tbody>
 	</tr>
 </td></tbody></tr>{% endfor %}</tbody></table>{% else %}<p>Aucune categoire</p>{% endif %}{% endblock %}

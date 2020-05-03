@@ -17,14 +17,20 @@
                         {{ question.id }}. {{ question.question }}
 					</td>
 					<td>
-						<a href="/question/{{ question.id }}" class="btn btn-dark">
-							Détails
+						<a href="/question/{{ question.id }}">
+							<button type="button" class="btn btn-info">
+								Détails
+							</button>
 						</a>
-						<a href="/question/edit/{{ question.id }}" class="btn btn-dark">
-							Modifier
+						<a href="/question/edit/{{ question.id }}">
+							<button type="button" class="btn btn-warning">
+								Modifier
+							</button>
 						</a>
-						<a href="/question/delete/{{ question.id }}" class="btn	btn-danger" onclick="return confirm('Etes-vous sûr de supprimer	cet	article?');">
-							Supprimer
+						<a href="/question/delete/{{ question.id }}" onclick="return confirm('Etes-vous sûr de supprimer	cet	article?');">
+							<button type="button" class="btn btn-danger">
+								Supprimer
+							</button>
 						</a>
                     </td>
 				</tr>

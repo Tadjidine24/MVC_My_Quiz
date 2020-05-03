@@ -14,6 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use App\Repository\QuestionRepository as quiz;
 use App\Repository\ReponseRepository as rep;
 use Doctrine\ORM\Query;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class QuestionController extends AbstractController
 {
@@ -71,6 +72,7 @@ class QuestionController extends AbstractController
     }
 
     /**
+    *@IsGranted("ROLE_ADMIN")
     *@Route("/question/new/create", name="new_question")
     *Method({"GET", "POST"})
     */
@@ -94,6 +96,7 @@ class QuestionController extends AbstractController
     }
 
     /**
+    *@IsGranted("ROLE_ADMIN")
     *@Route("/question/edit/{id}", name="edit_question")
     *Method({"GET","POST"})
     */
@@ -118,6 +121,7 @@ class QuestionController extends AbstractController
     }
 
     /**
+    *@IsGranted("ROLE_ADMIN")
     *@Route("/question/delete/{id}", name="delete_question")
     *Method({"DELETE"})
     */
@@ -150,7 +154,7 @@ class QuestionController extends AbstractController
         // ->getRepository('App:Reponse')
         // ->findByReponse(1, 1);
 
-        return $this->render('thequiz/index.html.twig', ['questions' => $questions->findByQuestion((int) $request->query->get("pagination",1),1), 'reponses' => $reponses->findByReponse((int) $request->query->get("pagination", 1),3), 'totalPosts' => $questions->count()]);
+        return $this->render('thequiz/index.html.twig', ['questions' => $questions->findByQuestion((int) $request->query->get("pagination",1),1), 'reponses' => $reponses->findByReponse((int) $request->query->get("pagination", 1),3)]);
     }
     
 

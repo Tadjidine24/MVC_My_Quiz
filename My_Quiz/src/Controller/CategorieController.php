@@ -9,6 +9,8 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+
 
 
 class CategorieController extends AbstractController
@@ -43,7 +45,8 @@ class CategorieController extends AbstractController
         return $this->render('categorie/showdetails.html.twig', array('categorie' => $categorie));
     }
 
-        /**
+    /**
+    *@IsGranted("ROLE_ADMIN")
     *@Route("/categorie/new/create", name="new_categorie")
     *Method({"GET", "POST"})
     */
@@ -63,13 +66,14 @@ class CategorieController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($categorie);
             $entityManager->flush();
-            return $this->redirectToRoute('categorie_list');
+            return $this->redirectToRoute('categorie');
         }
         return $this->render('categorie/new.html.twig',['form' => $form->createView()]);
     }
 
 
     /**
+    *@IsGranted("ROLE_ADMIN")
     *@Route("/categorie/edit/{id}", name="edit_categorie")
     *Method({"GET","POST"})
     */
@@ -94,6 +98,7 @@ class CategorieController extends AbstractController
     }
 
     /**
+    *@IsGranted("ROLE_ADMIN")
     *@Route("/categorie/delete/{id}", name="delete_categorie")
     *Method({"DELETE"})
     */
@@ -108,6 +113,6 @@ class CategorieController extends AbstractController
         $response = new Response();
         $response->send();
 
-        return $this->redirectToRoute('categorie_list');
+        return $this->redirectToRoute('categorie');
     }
 }
